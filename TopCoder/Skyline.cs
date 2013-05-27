@@ -50,19 +50,18 @@ Sample Output
 		[Test]
 		public static void Test()
 		{
-			Assert.AreEqual("1 11 3 13 9 0 12 7 16 3 19 18 22 3 23 13 29 0".Split(' ').Select(int.Parse), SweepLine(
-				@"1 11 5
-2 6 7
-3 13 9
-12 7 16
-14 3 25
-19 18 22
-23 13 29
-24 4 28
-".Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(x => x.Split(' '))
-				.Select(x => x.Select(int.Parse).ToArray())
-				.Select(x => new Building(x[0], x[1], x[2]))));
+			Assert.AreEqual(new[] { 1, 11, 3, 13, 9, 0, 12, 7, 16, 3, 19, 18, 22, 3, 23, 13, 29, 0 },
+				SweepLine(new[]
+				{
+					new Building(1,11,5),
+					new Building(2,6,7),
+					new Building(3,13,9),
+					new Building(12,7,16),
+					new Building(14,3,25),
+					new Building(19,18,22),
+					new Building(23,13,29),
+					new Building(24,4,28),
+				}));
 
 			const int max = 20000;
 			const int buildingCount = 1000;
